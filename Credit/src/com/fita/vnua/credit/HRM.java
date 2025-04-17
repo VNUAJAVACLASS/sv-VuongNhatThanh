@@ -1,4 +1,4 @@
-package vnua.fita.credit;
+package com.fita.vnua.credit;
 
 import java.util.ArrayList;
 import java.util.List;
