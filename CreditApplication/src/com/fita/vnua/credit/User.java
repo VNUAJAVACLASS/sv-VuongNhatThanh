@@ -18,7 +18,6 @@ public class User {
         this.userType = userType;
     }
 
-    // Getter and Setter methods
     public String getUserCode() {
         return userCode;
     }
