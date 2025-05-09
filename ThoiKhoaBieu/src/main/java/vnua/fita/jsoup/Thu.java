@@ -16,7 +16,6 @@ public class Thu {
 		dsLichHoc.add(lichHoc);
 	}
 
-	// Getters and Setters
 	public int getThu() {
 		return thu;
 	}

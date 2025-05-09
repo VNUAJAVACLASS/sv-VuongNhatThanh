@@ -17,6 +17,29 @@ public class DocHTML {
         this.ctrinhChinh = ctrinhChinh;
     }
 
+    public void khoiTaoVaDocFileHTML(String tenFile) throws IOException {
+        // Kiểm tra file tồn tại và quyền truy cập
+        File file = new File(tenFile);
+        if (!file.exists()) {
+            throw new IOException("File không tồn tại: " + file.getAbsolutePath());
+        }
+        if (!file.canRead()) {
+            throw new IOException("Không có quyền đọc file: " + file.getAbsolutePath());
+        }
+
+        // Đọc file HTML
+        System.out.println("Debug: Đang đọc file HTML...");
+        docFileHTML(tenFile);
+        System.out.println("Debug: Đọc file HTML thành công.");
+
+        // Kiểm tra dữ liệu
+        if (ctrinhChinh.getDsTuanHoc().isEmpty()) {
+            System.out.println("Không có dữ liệu lịch học. Vui lòng kiểm tra file HTML.");
+        } else {
+            System.out.println(" Các tuần có lịch học: " + ctrinhChinh.getDsTuanHoc().keySet()); //Check lỗi
+        }
+    }
+
     public void docFileHTML(String tenFile) throws IOException {
         // Đọc file HTML
         File input = new File(tenFile);

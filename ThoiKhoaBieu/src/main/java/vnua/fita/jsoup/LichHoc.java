@@ -35,6 +35,13 @@ public class LichHoc {
 		this.thoiGianHoc = thoiGianHoc;
 	}
 
+	// Hiển thị thông tin lịch học
+	public void hienThiLichHoc() {
+		System.out.printf("- %s (Thứ %s, Tiết %d-%d, Phòng: %s, Giảng viên: %s, %s)\n", tenMonHoc,
+				thu == 8 ? "Chủ Nhật" : thu, tietBatDau, tietBatDau + soTiet - 1, phong, giangVien,
+				getThoiGianHocHienThi());
+	}
+
 	// Lấy tuần đầu tiên từ chuỗi thoiGianHoc
 	public int getTuanDauTien() {
 		for (int i = 0; i < thoiGianHoc.length(); i++) {
@@ -75,7 +82,6 @@ public class LichHoc {
 				ngayCuoi.format(DATE_FORMATTER));
 	}
 
-	// Getters and Setters
 	public String getMaMonHoc() {
 		return maMonHoc;
 	}
