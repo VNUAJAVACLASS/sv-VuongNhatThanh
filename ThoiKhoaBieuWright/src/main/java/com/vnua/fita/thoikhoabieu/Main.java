@@ -1,7 +1,5 @@
 package com.vnua.fita.thoikhoabieu;
 
-import vnua.fita.jsoup.LichHoc;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -53,7 +51,6 @@ public class Main {
                     break;
                 case "3":
                     xemTheoTuanVaThu(lichHocList, sc);
-                    quayVeMenu(sc);
                     break;
                 case "4":
                     xemTheoNgay(lichHocList, sc);
@@ -70,11 +67,23 @@ public class Main {
         sc.close();
 
         // Bước 3: Xóa file HTML sau khi dùng xong để tránh đọc nhầm TK khác
-        try {
-            java.nio.file.Files.deleteIfExists(java.nio.file.Paths.get(filePath));
-            System.out.println("Đã xóa file tạm thời: " + filePath);
-        } catch (Exception e) {
-            System.err.println("Lỗi khi xóa file tạm: " + e.getMessage());
+        int retries = 3;
+        while (retries > 0) {
+            try {
+                java.nio.file.Files.deleteIfExists(java.nio.file.Paths.get(filePath));
+                System.out.println("Đã xóa file tạm thời: " + filePath);
+                break;
+            } catch (Exception e) {
+                retries--;
+                if (retries == 0) {
+                    System.err.println("Lỗi khi xóa file tạm: " + e.getMessage());
+                }
+                try {
+                    Thread.sleep(1000); // Wait before retrying
+                } catch (InterruptedException ie) {
+                    Thread.currentThread().interrupt();
+                }
+            }
         }
     }
 
@@ -84,19 +93,18 @@ public class Main {
     }
 
     private static String getThuString(LocalDate date) {
-        int thu = date.getDayOfWeek().getValue(); 
-        if (thu == 7) return "CN";
-        else return String.valueOf(thu + 1); 
+        int thu = date.getDayOfWeek().getValue();
+        return thu == 7 ? "8" : String.valueOf(thu + 1);
     }
 
     private static void xemTheoNgayHienTai(List<LichHoc> lichHocList) {
         LocalDate today = LocalDate.now();
         String thuStr = getThuString(today);
 
-        System.out.println("\n=== Thời khóa biểu ngày " + today.format(DATE_FORMATTER) + " (Thứ " + thuStr + ") ===");
+        System.out.println("\n=== Thời khóa biểu ngày " + today.format(DATE_FORMATTER) + " (Thứ " + (thuStr.equals("8") ? "CN" : thuStr) + ") ===");
         boolean coLich = false;
         for (LichHoc lh : lichHocList) {
-            if (lh.getThu().equalsIgnoreCase(thuStr) && checkTuanTheoNgay(lh, today)) {
+            if (String.valueOf(lh.getThu()).equals(thuStr) && checkTuanTheoNgay(lh, today)) {
                 lh.hienThiLichHoc();
                 coLich = true;
             }
@@ -146,24 +154,29 @@ public class Main {
         }
 
         System.out.print("Nhập thứ (2-7 hoặc CN): ");
-        String thu = sc.nextLine().trim().toUpperCase();
-        if (!thu.matches("[2-7]|CN")) {
+        String thuInput = sc.nextLine().trim().toUpperCase();
+        String thu;
+        if (thuInput.equals("CN")) {
+            thu = "8";
+        } else if (thuInput.matches("[2-7]")) {
+            thu = thuInput;
+        } else {
             System.out.println("Thứ không hợp lệ! Vui lòng nhập từ 2 đến 7 hoặc CN.");
             return;
         }
 
-        System.out.println("\n=== Thời khóa biểu tuần " + tuan + ", Thứ " + thu + " ===");
+        System.out.println("\n=== Thời khóa biểu tuần " + tuan + ", Thứ " + (thu.equals("8") ? "CN" : thu) + " ===");
         boolean coLich = false;
         for (LichHoc lh : lichHocList) {
             int tuanDau = lh.getTuanDauTien();
             int tuanCuoi = lh.getTuanCuoiCung();
-            if (tuan >= tuanDau && tuan <= tuanCuoi && lh.getThu().equalsIgnoreCase(thu)) {
+            if (tuan >= tuanDau && tuan <= tuanCuoi && String.valueOf(lh.getThu()).equals(thu)) {
                 lh.hienThiLichHoc();
                 coLich = true;
             }
         }
         if (!coLich) {
-            System.out.println("Không có lịch học trong tuần " + tuan + ", Thứ " + thu);
+            System.out.println("Không có lịch học trong tuần " + tuan + ", Thứ " + (thu.equals("8") ? "CN" : thu));
         }
     }
 
@@ -179,10 +192,10 @@ public class Main {
         }
 
         String thuStr = getThuString(ngay);
-        System.out.println("\n=== Thời khóa biểu ngày " + ngay.format(DATE_FORMATTER) + " (Thứ " + thuStr + ") ===");
+        System.out.println("\n=== Thời khóa biểu ngày " + ngay.format(DATE_FORMATTER) + " (Thứ " + (thuStr.equals("8") ? "CN" : thuStr) + ") ===");
         boolean coLich = false;
         for (LichHoc lh : lichHocList) {
-            if (lh.getThu().equalsIgnoreCase(thuStr) && checkTuanTheoNgay(lh, ngay)) {
+            if (String.valueOf(lh.getThu()).equals(thuStr) && checkTuanTheoNgay(lh, ngay)) {
                 lh.hienThiLichHoc();
                 coLich = true;
             }
