@@ -8,3 +8,5 @@
 - **ThoiKhoaBieu**: Thời khóa biểu sử dụng Jsoup.  
 - **ThoiKhoaBieuWright**: Thời khóa biểu sử dụng Wright.  
 - **ThoiKhoaBieuWrightPro**: Thời khóa biểu sử dụng Wright & Interface.  
+- **CreditHibernateMaven**: Bài toán tín chỉ sử dụng Hibernate.  
+
