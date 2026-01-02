@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Credit/src"/>
+	<classpathentry kind="src" path="Credit2/src"/>
+	<classpathentry kind="src" path="Credit3/src"/>
+	<classpathentry kind="src" path="CreditApplication/src"/>
+	<classpathentry excluding="com/fita/vnua/credit/" kind="src" path="CreditApplication1/src"/>
+	<classpathentry kind="src" path="CreditApplication1/src/com/fita/vnua/credit"/>
+	<classpathentry kind="src" path="CreditHibernateMaven/src/main/java"/>
+	<classpathentry kind="src" path="DemoBookWeb/src/main/java"/>
+	<classpathentry kind="src" path="DemoNewsWeb/src/main/java"/>
+	<classpathentry kind="src" path="hellogithub/src"/>
+	<classpathentry kind="src" path="ThoiKhoaBieu/src/main/java"/>
+	<classpathentry kind="src" path="ThoiKhoaBieuWright/src/main/java"/>
+	<classpathentry kind="src" path="ThoiKhoaBieuWrightPro/src/main/java"/>
+	<classpathentry kind="lib" path="CreditApplication/lib/commons-lang3-3.8.1.jar"/>
+	<classpathentry kind="lib" path="CreditApplication/lib/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="CreditApplication/lib/hsqldb-2.5.0.jar"/>
+	<classpathentry kind="lib" path="CreditApplication/lib/jackcess-3.0.1.jar"/>
+	<classpathentry kind="lib" path="CreditApplication/lib/ucanaccess-5.0.1.jar"/>
+	<classpathentry kind="lib" path="CreditApplication1/lib/mysql-connector-j-9.2.0.jar"/>
+	<classpathentry kind="lib" path="DemoBookWeb/src/main/webapp/WEB-INF/lib/jstl-1.2.jar"/>
+	<classpathentry kind="lib" path="DemoBookWeb/src/main/webapp/WEB-INF/lib/mysql-connector-j-8.4.0.jar"/>
+	<classpathentry kind="lib" path="DemoNewsWeb/src/main/webapp/WEB-INF/lib/jstl-1.2.jar"/>
+	<classpathentry kind="lib" path="DemoNewsWeb/src/main/webapp/WEB-INF/lib/mysql-connector-j-8.4.0.jar"/>
+	<classpathentry kind="output" path="DemoBookWeb/build/classes"/>
+</classpath>
