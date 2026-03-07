@@ -1,0 +1,118 @@
+/* ==== FORM LOGIN CHUẨN ĐẸP === */
+.login-container {
+    width: 100%;
+    max-width: 420px;
+    margin: 40px auto;
+    padding: 30px 28px;
+
+    background: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #e5e5e5;
+
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.login-container h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+    font-weight: 600;
+}
+
+.login-container form {
+    width: 100%;
+}
+
+/* LABEL */
+.login-container label {
+    display: block;
+    margin: 12px 0 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+}
+
+/* INPUT */
+.login-container input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    font-size: 15px;
+    transition: 0.25s ease;
+}
+
+.login-container input:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76,175,80,0.3);
+}
+
+/* BUTTON */
+.login-container button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+
+    background: #4CAF50;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+.login-container button:hover {
+    background: #43a047;
+}
+
+/* LINK dưới */
+.login-container .links {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.login-container .links a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.login-container .links a:hover {
+    text-decoration: underline;
+}
+
+
+/* =================================
+      RESPONSIVE MOBILE CỰC ĐẸP
+================================= */
+@media (max-width: 576px) {
+    .login-container {
+        margin: 30px 15px;
+        padding: 25px;
+        border-radius: 12px;
+    }
+
+    .login-container h2 {
+        font-size: 22px;
+    }
+
+    .login-container input {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .login-container button {
+        font-size: 17px;
+        padding: 12px;
+    }
+}
